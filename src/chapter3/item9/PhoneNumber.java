@@ -1,6 +1,6 @@
 package chapter3.item9;
 
-public class PhoneNumber {
+public class PhoneNumber implements Comparable<PhoneNumber> {
   private final short prefix;
   private final short areaCode;
   private final short lineNumber;
@@ -39,4 +39,26 @@ public class PhoneNumber {
     return result;
   }
 
+  @Override
+  public int compareTo(PhoneNumber o) {
+    if (prefix < o.prefix) {
+      return -1;
+    }
+    if (prefix > o.prefix) {
+      return 1;
+    }
+    if (areaCode < o.areaCode) {
+      return -1;
+    }
+    if (areaCode > o.areaCode) {
+      return 1;
+    }
+    if (lineNumber < o.lineNumber) {
+      return -1;
+    }
+    if (lineNumber > o.lineNumber) {
+      return 1;
+    }
+    return 0;
+  }
 }
